@@ -27,8 +27,8 @@ tapZone.addEventListener("click", () => {
     screen1.classList.add("fade-out");
 
     setTimeout(() => {
-      screen1.style.display = "none";
-      screen2.classList.remove("hidden");
+    screen1.classList.add("hidden");
+screen2.classList.remove("hidden");
     }, 600);
 
   }, 400);
