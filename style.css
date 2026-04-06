@@ -1,1 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  background: #000;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* SCREENS */
+.screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+/* FULL IMAGE (NO DISTORTION) */
+.bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* INVISIBLE TAP ZONE (OVER BUTTON) */
+.tap-zone {
+  position: absolute;
+  bottom: 65px; /* adjust slightly if needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+}
+
+/* SCREEN 2 */
+.loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+/* FADE TRANSITION */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
