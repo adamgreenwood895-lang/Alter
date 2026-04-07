@@ -42,6 +42,7 @@
       letter-spacing: 2px;
       margin-bottom: 30px;
     }
+/* ORB HITBOX (completely invisible) */
 .orb-hitbox {
   position: absolute;
 
@@ -51,28 +52,36 @@
   border-radius: 50%;
 
   left: 50%;
-  top: 75%; /* adjust this */
+  top: 72%;
 
   transform: translate(-50%, -50%);
   cursor: pointer;
-    }
-    .orb-hitbox.active {
-  background: transparent;
-  box-shadow: none;
+
+  background: transparent !important;
 }
 
-/* GLOW LAYER (this sits on top of the real orb) */
+/* REMOVE ANY ACTIVE BACKGROUND */
+.orb-hitbox.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* GLOW LAYER ONLY */
 .orb-hitbox::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
   pointer-events: none;
+
+  opacity: 0;
   transition: all 0.3s ease;
 }
 
-/* ACTIVE GLOW (when listening) */
+/* SHOW GLOW (no circle) */
 .orb-hitbox.active::after {
+  opacity: 1;
+
   box-shadow:
     0 0 60px rgba(255,255,255,0.7),
     0 0 140px rgba(255,255,255,0.4);
@@ -80,7 +89,7 @@
   animation: pulseGlow 1.5s infinite;
 }
 
-/* PULSE ANIMATION */
+/* PULSE */
 @keyframes pulseGlow {
   0% {
     box-shadow:
@@ -100,12 +109,6 @@
       0 0 100px rgba(255,255,255,0.3);
   }
 }
-
-/* TAP FEEDBACK */
-.orb-hitbox:active {
-  transform: translate(-50%, -50%) scale(0.95);
-}
-    }
   </style>
 </head>
 
