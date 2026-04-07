@@ -174,15 +174,19 @@ setTimeout(() => {
 }, 300);
 }
 
-else if (transcript.includes("t shirt") || transcript.includes("tshirt")) {
+else if (
+  transcript.includes("t shirt") ||
+  transcript.includes("tshirt") ||
+  transcript.includes("tee shirt")
+) {
   speak("I've found a selection of t shirts for you");
   localStorage.setItem("category", "tshirts");
-  
-   document.body.style.opacity = "0";
-          
-setTimeout(() => {
-  window.location.href = "categories.html";
-}, 300);
+
+  document.body.style.opacity = "0";
+
+  setTimeout(() => {
+    window.location.href = "categories.html";
+ }, 300);
 }
 
 else if (transcript.includes("tracksuit")) {
