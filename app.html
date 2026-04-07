@@ -127,11 +127,13 @@
 
     // 🔊 SPEAK FUNCTION
     function speak(text) {
-      const speech = new SpeechSynthesisUtterance(text);
-      speech.lang = "en-GB";
-      speech.rate = 0.95;
-      speech.pitch = 0.9;
-      window.speechSynthesis.speak(speech);
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "en-GB";
+  speech.rate = 0.92;
+  speech.pitch = 0.85;
+  speech.volume = 1;
+  window.speechSynthesis.cancel(); // stops overlap
+  window.speechSynthesis.speak(speech);
     }
 
     // 🎯 MIC CLICK
