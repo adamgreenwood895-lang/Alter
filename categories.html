@@ -93,6 +93,10 @@ title.innerText = type.toUpperCase();
 
 const items = PRODUCTS[type];
 
+setTimeout(() => {
+  speak("Showing " + type);
+}, 500);
+
 items.forEach(product => {
   const card = document.createElement("div");
   card.className = "card";
