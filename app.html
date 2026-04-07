@@ -7,13 +7,6 @@
 
   <style>
     body {
-      body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: -1;
-      }
   margin: 0;
   color: white;
   font-family: -apple-system, sans-serif;
@@ -26,7 +19,16 @@
 
   background: url("assets/bg.png") no-repeat center center fixed;
   background-size: cover;
-    }
+}
+
+/* 🔥 overlay (separate, NOT inside body) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+  }
 
     .voice-ui {
       text-align: center;
