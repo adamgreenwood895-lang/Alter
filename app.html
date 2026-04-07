@@ -36,68 +36,29 @@
 /* ORB HITBOX (completely invisible) */
 .orb-hitbox {
   position: absolute;
-
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 160px;
   height: 160px;
-
   border-radius: 50%;
-
-  left: 50%;
-  top: 72%;
-
-  transform: translate(-50%, -50%);
   cursor: pointer;
-
-  background: transparent !important;
 }
 
-/* REMOVE ANY ACTIVE BACKGROUND */
-.orb-hitbox.active {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* GLOW LAYER ONLY */
+/* ✨ GLOW ONLY (no dark circle) */
 .orb-hitbox::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  pointer-events: none;
-
-  opacity: 0;
+  box-shadow: 0 0 40px rgba(255,255,255,0.4);
   transition: all 0.3s ease;
 }
 
-/* SHOW GLOW (no circle) */
+/* 🔊 LISTENING STATE */
 .orb-hitbox.active::after {
-  opacity: 1;
-
-  box-shadow:
-    0 0 60px rgba(255,255,255,0.7),
-    0 0 140px rgba(255,255,255,0.4);
-
-  animation: pulseGlow 1.5s infinite;
-}
-
-/* PULSE */
-@keyframes pulseGlow {
-  0% {
-    box-shadow:
-      0 0 40px rgba(255,255,255,0.5),
-      0 0 100px rgba(255,255,255,0.3);
-  }
-
-  50% {
-    box-shadow:
-      0 0 100px rgba(255,255,255,0.9),
-      0 0 180px rgba(255,255,255,0.5);
-  }
-
-  100% {
-    box-shadow:
-      0 0 40px rgba(255,255,255,0.5),
-      0 0 100px rgba(255,255,255,0.3);
+  box-shadow: 0 0 80px rgba(255,255,255,0.9);
+  transform: scale(1.2);
   }
 }
   </style>
