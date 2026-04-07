@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTER</title>
 
+  <style>
+    body {
+      margin: 0;
+      color: white;
+      font-family: -apple-system, sans-serif;
+      overflow: hidden;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+      background: url("assets/bg.png") no-repeat center center fixed;
+      background-size: cover;
+
+      transition: opacity 0.3s ease;
+    }
+
+    /* overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+    }
+
+    .voice-ui {
+      text-align: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .status {
+      opacity: 0.7;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .orb {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+
+      background: radial-gradient(circle, #ffffff 0%, #dcdcdc 40%, #999 100%);
+
+      box-shadow:
+        0 0 20px rgba(255,255,255,0.4),
+        0 0 60px rgba(255,255,255,0.2);
+
+      transition: all 0.3s ease;
+
+      animation: breathe 3s infinite;
+    }
+
+    .orb.active {
+      transform: scale(1.2);
+
+      box-shadow:
+        0 0 30px rgba(255,255,255,0.7),
+        0 0 80px rgba(255,255,255,0.4);
+
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="voice-ui">
+    <div class="status" id="status">Tap to speak</div>
+    <div class="orb" id="mic"></div>
+  </div>
+
+  <script>
+    window.speechSynthesis.onvoiceschanged = () => {
+      window.speechSynthesis.getVoices();
+    };
+
+    const mic = document.getElementById("mic");
+    const status = document.getElementById("status");
+
+    let recognition;
+
+    // 🎤 INIT VOICE
+    if ('webkitSpeechRecognition' in window) {
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.lang = "en-GB";
+      recognition.interimResults = false;
+    }
+
+    // 🔊 SPEAK FUNCTION
+    function speak(text) {
+      const speech = new SpeechSynthesisUtterance(text);
+      const voices = window.speechSynthesis.getVoices();
+
+      const preferred =
+        voices.find(v => v.name.includes("Google UK English Female")) ||
+        voices.find(v => v.name.includes("Google UK English Male")) ||
+        voices.find(v => v.lang === "en-GB");
+
+      if (preferred) speech.voice = preferred;
+
+      speech.rate = 0.92;
+      speech.pitch = 0.9;
+      speech.volume = 1;
+
+      window.speechSynthesis.speak(speech);
+    }
+
+    // 🎯 MIC CLICK
+    let isListening = false;
+
+    mic.addEventListener("click", () => {
+      if (!isListening) {
+        recognition.start();
+        isListening = true;
+
+        status.innerText = "Listening...";
+        mic.classList.add("active");
+      }
+    });
+
+    recognition.onend = () => {
+      isListening = false;
+      mic.classList.remove("active");
+      mic.style.animation = "breathe 3s infinite";
+    };
+
+    // 🧠 VOICE RESULT
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript.toLowerCase();
+
+      status.innerText = transcript;
+      mic.classList.remove("active");
+
+      setTimeout(() => {
+
+        // 🔥 HOODIES
+        if (transcript.includes("hood")) {
+          speak("I've found a selection of hoodies for you");
+          localStorage.setItem("category", "hoodies");
+
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location.href = "categories.html";
+          }, 300);
+        }
+
+        // 🔥 TSHIRTS
+        else if (
+          transcript.includes("shirt") ||
+          transcript.includes("tshirt") ||
+          transcript.includes("tee")
+        ) {
+          speak("I've found a selection of t shirts for you");
+          localStorage.setItem("category", "tshirts");
+
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location.href = "categories.html";
+          }, 300);
+        }
+
+        // 🔥 TRACKSUITS
+        else if (transcript.includes("track")) {
+          speak("I've found a selection of tracksuits for you");
+          localStorage.setItem("category", "tracksuits");
+
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location.href = "categories.html";
+          }, 300);
+        }
+
+        // 🔥 BAGS
+        else if (transcript.includes("bag")) {
+          speak("I've found a selection of bags for you");
+          localStorage.setItem("category", "bags");
+
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location.href = "categories.html";
+          }, 300);
+        }
+
+        // ❌ NO MATCH
+        else {
+          status.innerText = "Try hoodie, t shirt, or tracksuit";
+          speak("Try saying hoodie or t shirt");
+        }
+
+      }, 500);
+    };
+  </script>
+
+</body>
+</html>
