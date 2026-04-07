@@ -123,3 +123,12 @@ body {
 body.loaded {
   opacity: 1;
 }
+.status {
+  position: absolute;
+  bottom: 28%;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.8;
+  letter-spacing: 2px;
+}
