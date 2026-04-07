@@ -4,7 +4,7 @@ function enterApp() {
   // show loading screen
   loading.classList.add("active");
 
-  // simulate transition to next screen
+  // simulate next screen
   setTimeout(() => {
     document.body.innerHTML = `
       <div style="
