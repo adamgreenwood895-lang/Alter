@@ -43,32 +43,19 @@
       margin-bottom: 30px;
     }
 
-    .orb {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+    .orb-img {
+  width: 140px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
+  animation: breathe 3s infinite;
+}
 
-      background: radial-gradient(circle, #ffffff 0%, #dcdcdc 40%, #999 100%);
-
-      box-shadow:
-        0 0 20px rgba(255,255,255,0.4),
-        0 0 60px rgba(255,255,255,0.2);
-
-      transition: all 0.3s ease;
-
-      animation: breathe 3s infinite;
-    }
-
-    .orb.active {
-      transform: scale(1.2);
-
-      box-shadow:
-        0 0 30px rgba(255,255,255,0.7),
-        0 0 80px rgba(255,255,255,0.4);
-
-      animation: pulse 1.2s infinite;
-    }
-
+.orb-img.active {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 30px rgba(255,255,255,0.8));
+  animation: pulse 1.2s infinite;
+}
+    
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.25); }
@@ -98,7 +85,7 @@
 
   <div class="voice-ui">
     <div class="status" id="status">Tap to speak</div>
-    <div class="orb" id="mic"></div>
+    <img src="assets/orb.jpg" id="mic" class="orb-img" />
   </div>
 
   <script>
