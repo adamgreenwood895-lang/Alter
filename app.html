@@ -137,16 +137,22 @@
     }
 
     // 🎯 MIC CLICK
-    mic.addEventListener("click", () => {
-      if (!recognition) {
-        status.innerText = "Voice not supported";
-        return;
-      }
+    let isListening = false;
 
-      mic.classList.add("active");
-      status.innerText = "Listening...";
-      recognition.start();
-    });
+mic.addEventListener("click", () => {
+  if (!isListening) {
+    recognition.start();
+    isListening = true;
+
+    status.innerText = "Listening...";
+    mic.classList.add("active");
+  }
+});
+
+recognition.onend = () => {
+  isListening = false;
+  mic.classList.remove("active");
+};
 
     // 🧠 VOICE RESULT
     recognition.onresult = (event) => {
