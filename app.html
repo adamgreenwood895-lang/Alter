@@ -169,13 +169,15 @@
   }, 1000);
 };
   </script>
+  <script>
 function speak(text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "en-GB";
   speech.rate = 0.95;
   speech.pitch = 0.9;
-
   window.speechSynthesis.speak(speech);
 }
+  </script>
+
 </body>
 </html>
