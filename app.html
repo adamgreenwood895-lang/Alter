@@ -23,15 +23,6 @@
       transition: opacity 0.3s ease;
     }
 
-    /* overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: -1;
-    }
-
     .voice-ui {
       text-align: center;
       animation: fadeIn 1.2s ease;
@@ -124,7 +115,7 @@
       window.speechSynthesis.getVoices();
     };
 
-    const mic = document.getElementById("mic");
+    const mic = document.querySelector(".orb-hitbox");
     const status = document.getElementById("status");
 
     let recognition;
