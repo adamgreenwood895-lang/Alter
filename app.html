@@ -137,26 +137,36 @@
     });
 
     recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
+  const transcript = event.results[0][0].transcript.toLowerCase();
 
-      status.innerText = transcript;
+  status.innerText = transcript;
+  mic.classList.remove("active");
 
-      mic.classList.remove("active");
+  setTimeout(() => {
 
-      // Example response (we’ll expand this later)
-      setTimeout(() => {
-        status.innerText = "Processing...";
-      }, 1000);
-    };
+    // 🔥 BASIC INTENT MATCHING
+    if (transcript.includes("hoodie")) {
+      window.location.href = "categories.html";
+    }
 
-    recognition.onerror = () => {
-      mic.classList.remove("active");
-      status.innerText = "Try again";
-    };
+    else if (transcript.includes("t shirt") || transcript.includes("tshirt")) {
+      window.location.href = "categories.html";
+    }
 
-    recognition.onend = () => {
-      mic.classList.remove("active");
-    };
+    else if (transcript.includes("tracksuit")) {
+      window.location.href = "categories.html";
+    }
+
+    else if (transcript.includes("bag") || transcript.includes("handbag")) {
+      window.location.href = "categories.html";
+    }
+
+    else {
+      status.innerText = "Refining search...";
+    }
+
+  }, 1000);
+};
   </script>
 
 </body>
