@@ -159,22 +159,26 @@
 
         if (transcript.includes("hoodie")) {
           speak("I've found a selection of hoodies for you");
-          window.location.href = "categories.html?type=hoodies";
+          window.location.href = "categories.html";
+localStorage.setItem("category", "hoodies");
         }
 
         else if (transcript.includes("t shirt") || transcript.includes("tshirt")) {
           speak("I've found a selection of tshirts for you");
-          window.location.href = "categories.html?type=tshirts";
+          window.location.href = "categories.html";
+localStorage.setItem("category", "t shirt");
         }
 
         else if (transcript.includes("tracksuit")) {
           speak("I've found a selection of tracksuits for you");
-          window.location.href = "categories.html?type=tracksuits";
+          window.location.href = "categories.html";
+localStorage.setItem("category", "tracksuit");
         }
 
         else if (transcript.includes("bag") || transcript.includes("handbag")) {
           speak("I've found a selection of bags for you");
-          window.location.href = "categories.html?type=bags";
+          window.location.href = "categories.html";
+localStorage.setItem("category", "bags");
         }
 
         else {
