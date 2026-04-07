@@ -8,8 +8,8 @@
 <style>
 body {
   margin: 0;
-  background: black;
-  color: white;
+  background: #000;
+  color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -18,57 +18,57 @@ body {
 }
 
 .title {
-  font-size: 28px;
-  letter-spacing: 4px;
+  font-size: 22px;
   margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 14px;
 }
 
 .card {
   background: #111;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
-.card:hover {
-  transform: scale(1.03);
+.card:active {
+  transform: scale(0.97);
 }
 
 .card img {
   width: 100%;
-  height: 180px;
+  height: 160px;
   object-fit: cover;
 }
 
-.card-content {
-  padding: 12px;
+.info {
+  padding: 10px;
 }
 
 .name {
   font-size: 14px;
-  opacity: 0.8;
 }
 
 .price {
-  font-size: 16px;
+  font-size: 13px;
+  opacity: 0.6;
   margin-top: 4px;
 }
 
 .buy {
-  margin-top: 10px;
-  padding: 10px;
-  text-align: center;
+  margin-top: 8px;
+  padding: 8px;
+  width: 100%;
+  border: none;
   background: white;
   color: black;
   border-radius: 8px;
-  font-size: 14px;
+  font-weight: 600;
 }
 </style>
 </head>
@@ -76,26 +76,27 @@ body {
 <body>
 
 <div class="container">
-  <div class="title" id="title">Loading...</div>
+  <div class="title" id="title"></div>
   <div class="grid" id="grid"></div>
 </div>
 
 <script src="products.js"></script>
 
 <script>
+// GET CATEGORY FROM URL
 const params = new URLSearchParams(window.location.search);
-const type = params.get("type");
+const type = params.get("type") || "hoodies";
 
-const grid = document.getElementById("grid");
-const title = document.getElementById("title");
+document.getElementById("title").innerText = type;
 
-title.innerText = type.toUpperCase();
-
-const items = PRODUCTS[type];
-
+// 🔊 VOICE FEEDBACK
 setTimeout(() => {
   speak("Showing " + type);
 }, 500);
+
+// LOAD PRODUCTS
+const items = PRODUCTS[type];
+const grid = document.getElementById("grid");
 
 items.forEach(product => {
   const card = document.createElement("div");
@@ -103,26 +104,24 @@ items.forEach(product => {
 
   card.innerHTML = `
     <img src="${product.image}">
-    <div class="card-content">
+    <div class="info">
       <div class="name">${product.name}</div>
       <div class="price">${product.price}</div>
-      <div class="buy" onclick="buy('${product.name}')">Buy</div>
+      <button class="buy">Buy</button>
     </div>
   `;
 
   grid.appendChild(card);
 });
 
-function buy(name) {
-  alert("Buying: " + name);
-}
-  function speak(text) {
+// 🔊 AI VOICE
+function speak(text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "en-GB";
   speech.rate = 0.95;
   speech.pitch = 0.9;
   window.speechSynthesis.speak(speech);
-  }
+}
 </script>
 
 </body>
