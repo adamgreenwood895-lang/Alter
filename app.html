@@ -43,12 +43,21 @@
       margin-bottom: 30px;
     }
 
-    .orb-img {
+    .orb {
   width: 140px;
+  height: 140px;
+  border-radius: 50%;
+
+  background: radial-gradient(circle, #ffffff 0%, #dcdcdc 60%, #bfbfbf 100%);
+
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.6),
+    0 0 120px rgba(255,255,255,0.25);
+
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
+
   animation: breathe 3s infinite;
-}
+    }
 
 .orb-img.active {
   transform: scale(1.2);
