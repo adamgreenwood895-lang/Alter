@@ -112,6 +112,9 @@
   </div>
 
   <script>
+    window.speechSynthesis.onvoiceschanged = () => {
+  window.speechSynthesis.getVoices();
+};
     const mic = document.getElementById("mic");
     const status = document.getElementById("status");
 
