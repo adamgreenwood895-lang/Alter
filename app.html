@@ -38,32 +38,36 @@ background-size: cover;
   letter-spacing: 2px;
   opacity: 0.85;
     }
+/* ORB HITBOX (invisible click area) */
 .orb-hitbox {
   position: absolute;
-  bottom: 8%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-/* ✨ GLOW ONLY (no dark circle) */
+/* ✨ PURE GLOW (NO BLACK FILL) */
 .orb-hitbox::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  mix-blend-mode: screen;
-  box-shadow: 0 0 60px rgba(255,255,255,0.6);
+
+  /* NO background here 👇 */
+  background: transparent;
+
+  box-shadow: 0 0 60px rgba(255,255,255,0.35);
   transition: all 0.3s ease;
 }
 
 /* 🔊 LISTENING STATE */
 .orb-hitbox.active::after {
-  box-shadow: 0 0 80px rgba(255,255,255,0.9);
-  transform: scale(1.2);
+  box-shadow: 0 0 120px rgba(255,255,255,0.9);
+  transform: scale(1.15);
 }
 
   </style>
