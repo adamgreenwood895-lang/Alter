@@ -40,9 +40,9 @@ body {
 /* ORB HIT AREA */
 .orb-hitbox {
   position: absolute;
-  top: 72%;   /* 👈 MOVED DOWN */
+  top: 70%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 
   width: 200px;
   height: 200px;
