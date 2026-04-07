@@ -83,36 +83,41 @@ body {
 <script src="products.js"></script>
 
 <script>
-// GET CATEGORY FROM URL
-const params = new URLSearchParams(window.location.search);
-const type = params.get("type") || "hoodies";
+let currentType = "hoodies";
 
-document.getElementById("title").innerText = type;
-
-// 🔊 VOICE FEEDBACK
-setTimeout(() => {
-  speak("Showing " + type);
-}, 500);
-
-// LOAD PRODUCTS
-const items = PRODUCTS[type];
+const titleEl = document.getElementById("title");
 const grid = document.getElementById("grid");
 
-items.forEach(product => {
-  const card = document.createElement("div");
-  card.className = "card";
+// 🔥 LOAD CATEGORY (DYNAMIC)
+function loadCategory(type) {
+  currentType = type;
 
-  card.innerHTML = `
-    <img src="${product.image}">
-    <div class="info">
-      <div class="name">${product.name}</div>
-      <div class="price">${product.price}</div>
-      <button class="buy">Buy</button>
-    </div>
-  `;
+  titleEl.innerText = type;
+  grid.innerHTML = ""; // clear old products
 
-  grid.appendChild(card);
-});
+  const items = PRODUCTS[type];
+
+  // 🔊 Voice feedback
+  setTimeout(() => {
+    speak("Showing " + type);
+  }, 300);
+
+  items.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${product.image}">
+      <div class="info">
+        <div class="name">${product.name}</div>
+        <div class="price">${product.price}</div>
+        <button class="buy">Buy</button>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
 
 // 🔊 AI VOICE
 function speak(text) {
@@ -122,7 +127,9 @@ function speak(text) {
   speech.pitch = 0.9;
   window.speechSynthesis.speak(speech);
 }
-</script>
 
+// 👇 INITIAL LOAD
+loadCategory("hoodies");
+</script>
 </body>
 </html>
