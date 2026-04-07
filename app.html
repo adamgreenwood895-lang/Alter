@@ -165,7 +165,6 @@ mic.addEventListener("click", () => {
     recognition.onend = () => {
       isListening = false;
       mic.classList.remove("active");
-      mic.style.animation = "breathe 3s infinite";
     };
 
     // 🧠 VOICE RESULT
