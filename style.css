@@ -7,16 +7,11 @@
 
 /* BACKGROUND (THIS IS THE IMPORTANT PART) */
 body {
+  margin: 0;
   height: 100vh;
-  width: 100%;
-  overflow: hidden;
-
-  background-image: url("assets/night.png"); /* NO ./ needed here */
+  background: url("./assets/night.png") no-repeat center center;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: black;
 }
 
 /* HERO TEXT */
