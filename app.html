@@ -41,24 +41,18 @@ body::before {
       margin-bottom: 30px;
     }
 
-    .mic {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: white;
+    .orb {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  background: radial-gradient(circle, #ffffff 0%, #dcdcdc 40%, #999 100%);
+  
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.4),
+    0 0 60px rgba(255,255,255,0.2);
 
-      position: relative;
-
-      box-shadow:
-        0 0 20px rgba(255,255,255,0.2),
-        0 0 60px rgba(255,255,255,0.1);
-
-      animation: breathe 2.5s infinite ease-in-out;
-      cursor: pointer;
+  transition: all 0.3s ease;
     }
 
     .mic.active {
