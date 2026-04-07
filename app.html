@@ -28,20 +28,19 @@ background-size: cover;
       animation: fadeIn 1.2s ease;
     }
   .status {
+  .status {
   position: absolute;
-  bottom: 30%; /* 🔥 LOWER = moves closer to orb */
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 28%;
+  width: 100%;
   text-align: center;
-
   font-size: 16px;
-  letter-spacing: 2px;
   opacity: 0.85;
-    }
-/* ORB HITBOX (invisible click area) */
+  letter-spacing: 2px;
+  }
+    }/* ORB HITBOX */
 .orb-hitbox {
   position: absolute;
-  bottom: 10%;
+  bottom: 9%;
   left: 50%;
   transform: translateX(-50%);
   width: 180px;
@@ -50,21 +49,18 @@ background-size: cover;
   cursor: pointer;
 }
 
-/* ✨ PURE GLOW (NO BLACK FILL) */
+/* CLEAN GLOW (no black circle) */
 .orb-hitbox::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 50%;
-
-  /* NO background here 👇 */
   background: transparent;
-
-  box-shadow: 0 0 60px rgba(255,255,255,0.35);
+  box-shadow: 0 0 50px rgba(255,255,255,0.25);
   transition: all 0.3s ease;
 }
 
-/* 🔊 LISTENING STATE */
+/* LISTENING */
 .orb-hitbox.active::after {
   box-shadow: 0 0 120px rgba(255,255,255,0.9);
   transform: scale(1.15);
@@ -132,11 +128,14 @@ mic.addEventListener("click", () => {
   }
 });
 
-    recognition.onend = () => {
-      isListening = false;
-      mic.classList.remove("active");
-    };
+recognition.onend = () => {
+  isListening = false;
 
+  mic.classList.remove("active");
+
+  // CLEAN UX (no annoying reset text)
+  status.innerText = "";
+};
     // 🧠 VOICE RESULT
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript.toLowerCase();
