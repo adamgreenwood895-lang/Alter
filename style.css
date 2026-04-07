@@ -40,16 +40,15 @@ body {
 /* ORB HIT AREA */
 .orb-hitbox {
   position: absolute;
-  bottom: 20%;
+  top: 72%;   /* 👈 MOVED DOWN */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 
-  cursor: pointer;
-  z-index: 999;
+  z-index: 9999;
 
   -webkit-tap-highlight-color: transparent;
 }
