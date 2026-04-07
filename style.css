@@ -8,10 +8,9 @@
 /* BACKGROUND (THIS IS THE IMPORTANT PART) */
 body {
   margin: 0;
+  background: url("assets/night.png") center/cover no-repeat;
   height: 100vh;
-  background: url("https://adamgreenwood895-lang.github.io/Alter/assets/night.png") no-repeat center center;
-  background-size: cover;
-  background-color: black;
+  overflow: hidden;
 }
 
 /* HERO TEXT */
