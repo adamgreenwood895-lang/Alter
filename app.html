@@ -120,4 +120,44 @@
     if ('webkitSpeechRecognition' in window) {
       recognition = new webkitSpeechRecognition();
       recognition.continuous = false;
-      recognition.lang = "en-GB
+      recognition.lang = "en-GB";
+      recognition.interimResults = false;
+    }
+
+    mic.addEventListener("click", () => {
+      if (!recognition) {
+        status.innerText = "Voice not supported";
+        return;
+      }
+
+      mic.classList.add("active");
+      status.innerText = "Listening...";
+
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+
+      status.innerText = transcript;
+
+      mic.classList.remove("active");
+
+      // Example response (we’ll expand this later)
+      setTimeout(() => {
+        status.innerText = "Processing...";
+      }, 1000);
+    };
+
+    recognition.onerror = () => {
+      mic.classList.remove("active");
+      status.innerText = "Try again";
+    };
+
+    recognition.onend = () => {
+      mic.classList.remove("active");
+    };
+  </script>
+
+</body>
+</html>
