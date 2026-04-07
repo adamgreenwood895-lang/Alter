@@ -166,9 +166,7 @@ recognition.onend = () => {
         if (transcript.includes("hoodie")) {
   speak("I've found a selection of hoodies for you");
   localStorage.setItem("category", "hoodies");
-  
-  document.body.style.opacity = "0";
-          
+        
 setTimeout(() => {
   window.location.href = "categories.html";
 }, 300);
@@ -182,7 +180,6 @@ else if (
   speak("I've found a selection of t shirts for you");
   localStorage.setItem("category", "tshirts");
 
-  document.body.style.opacity = "0";
 
   setTimeout(() => {
     window.location.href = "categories.html";
@@ -193,7 +190,6 @@ else if (transcript.includes("tracksuit")) {
   speak("I've found a selection of tracksuits for you");
   localStorage.setItem("category", "tracksuits"); // ⚠️ FIX THIS
 
-   document.body.style.opacity = "0";
           
 setTimeout(() => {
   window.location.href = "categories.html";
@@ -204,7 +200,6 @@ else if (transcript.includes("bag")) {
   speak("I've found a selection of bags for you");
   localStorage.setItem("category", "bags");
 
-   document.body.style.opacity = "0";
           
 setTimeout(() => {
   window.location.href = "categories.html";
