@@ -129,7 +129,8 @@ function speak(text) {
 }
 
 // 👇 INITIAL LOAD
-loadCategory("hoodies");
+const saved = localStorage.getItem("category") || "hoodies";
+loadCategory(saved);
 </script>
 </body>
 </html>
