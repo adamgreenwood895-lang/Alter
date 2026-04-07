@@ -8,9 +8,11 @@
 /* BACKGROUND (THIS IS THE IMPORTANT PART) */
 body {
   margin: 0;
-  background: url("assets/night.png") center/cover no-repeat;
-  height: 100vh;
-  overflow: hidden;
+  font-family: -apple-system, sans-serif;
+  color: white;
+
+  background: url("assets/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 /* HERO TEXT */
