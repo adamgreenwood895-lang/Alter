@@ -56,7 +56,11 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
     }
-    
+    .orb-hitbox.active {
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.6),
+    0 0 120px rgba(255,255,255,0.3);
+    }
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.25); }
