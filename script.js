@@ -1,5 +1,5 @@
 alert("JS LOADED");
 
-function enterApp() {
+document.querySelector(".orb-hitbox").addEventListener("click", function () {
   alert("Tapped!");
-}
+});
