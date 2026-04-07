@@ -57,3 +57,65 @@ body {
 .orb-hitbox:active {
   transform: translateX(-50%) scale(0.95);
 }
+/* BACKGROUND IMAGE */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("assets/night.png") center/cover no-repeat;
+  z-index: 1;
+}
+
+/* HERO TEXT */
+.hero {
+  position: absolute;
+  top: 8%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  color: white;
+}
+
+.logo {
+  font-size: 34px;
+  letter-spacing: 6px;
+  font-weight: 600;
+}
+
+.tagline {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* LOADING SCREEN */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+
+.loading-screen.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loading-text {
+  color: white;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
