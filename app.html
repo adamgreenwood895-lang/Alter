@@ -133,15 +133,17 @@
     // 🎯 MIC CLICK
     let isListening = false;
 
-    mic.addEventListener("click", () => {
-      if (!isListening) {
-        recognition.start();
-        isListening = true;
+mic.addEventListener("click", () => {
+  if (!recognition) return;
 
-        status.innerText = "Listening...";
-        mic.classList.add("active");
-      }
-    });
+  if (!isListening) {
+    recognition.start();
+    isListening = true;
+
+    status.innerText = "Listening...";
+    mic.classList.add("active");
+  }
+});
 
     recognition.onend = () => {
       isListening = false;
