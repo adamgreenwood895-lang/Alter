@@ -47,10 +47,10 @@
         0 0 60px rgba(255,255,255,0.1);
 
       animation: breathe 2.5s infinite ease-in-out;
+      cursor: pointer;
     }
 
     .mic.active {
-      background: #fff;
       box-shadow:
         0 0 40px rgba(255,255,255,0.5),
         0 0 100px rgba(255,255,255,0.3);
@@ -112,72 +112,3 @@
   </div>
 
   <script>
-    const mic = document.getElementById("mic");
-    const status = document.getElementById("status");
-
-    let recognition;
-
-    if ('webkitSpeechRecognition' in window) {
-      recognition = new webkitSpeechRecognition();
-      recognition.continuous = false;
-      recognition.lang = "en-GB";
-      recognition.interimResults = false;
-    }
-
-    mic.addEventListener("click", () => {
-      if (!recognition) {
-        status.innerText = "Voice not supported";
-        return;
-      }
-
-      mic.classList.add("active");
-      status.innerText = "Listening...";
-
-      recognition.start();
-    });
-
-    recognition.onresult = (event) => {
-  const transcript = event.results[0][0].transcript.toLowerCase();
-
-  status.innerText = transcript;
-  mic.classList.remove("active");
-
-  setTimeout(() => {
-
-    // 🔥 BASIC INTENT MATCHING
-    if (transcript.includes("hoodie")) {
-  speak("Showing hoodies");
-  window.location.href = "categories.html";
-    }
-
-    else if (transcript.includes("t shirt") || transcript.includes("tshirt")) {
-      window.location.href = "categories.html";
-    }
-
-    else if (transcript.includes("tracksuit")) {
-      window.location.href = "categories.html";
-    }
-
-    else if (transcript.includes("bag") || transcript.includes("handbag")) {
-      window.location.href = "categories.html";
-    }
-
-    else {
-      status.innerText = "Refining search...";
-    }
-
-  }, 1000);
-};
-  </script>
-  <script>
-function speak(text) {
-  const speech = new SpeechSynthesisUtterance(text);
-  speech.lang = "en-GB";
-  speech.rate = 0.95;
-  speech.pitch = 0.9;
-  window.speechSynthesis.speak(speech);
-}
-  </script>
-
-</body>
-</html>
