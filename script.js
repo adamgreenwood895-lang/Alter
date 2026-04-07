@@ -1,16 +1,23 @@
-alert("JS LOADED");
+function enterApp() {
+  const loading = document.getElementById("loading");
 
-window.onload = function () {
+  // show loading screen
+  loading.classList.add("active");
 
-  const orb = document.querySelector(".orb-hitbox");
-
-  if (!orb) {
-    alert("ORB NOT FOUND");
-    return;
-  }
-
-  orb.addEventListener("click", function () {
-    alert("Tapped!");
-  });
-
-};
+  // simulate transition to next screen
+  setTimeout(() => {
+    document.body.innerHTML = `
+      <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:black;
+        color:white;
+        font-size:22px;
+      ">
+        Voice system initializing...
+      </div>
+    `;
+  }, 2000);
+}
